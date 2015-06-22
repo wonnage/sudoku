@@ -1,9 +1,13 @@
 h1, h2, p { color: #226 !important }
 
 h2.section-slide {
-    text-align: center;
+  text-align: center;
 }
 
-.slide p {
-    text-align: center;
+p {
+  text-align: center;
+}
+
+ol p {
+  text-align: left;
 }
