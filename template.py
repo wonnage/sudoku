@@ -44,7 +44,7 @@ def load_puzzle(path):
 def pretty(board):
   if board is None: return 'NO SOLUTION'
   for line in board:
-    return ''.join(map(str,line))
+    return '\n'.join(''.join(map(str,line)) for line in board)
 
 if __name__ == '__main__':
   board = load_puzzle('easy.txt')
