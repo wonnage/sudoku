@@ -1,10 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2.7
 
 ## If you copy this file and then replace all the 'pass' statements
 ## with an implementation of the function, you should have a working
 ## Sudoku solver.
-
-from sudoku import digits, main
 
 #
 # Recursive depth first search

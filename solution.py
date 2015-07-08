@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2.7
 
 ## If you copy this file and then replace all the 'pass' statements
 ## with an implementation of the function, you should have a working
@@ -32,7 +32,7 @@ def empty_square(board):
         if cell==0: return (x,y)
 
 def square_of(x,y):
-  "Return all coordinates that are in the same 3x3 square as (x,y)"
+  "Return a list of all coordinates that are in the same 3x3 square as (x,y)"
   # upper left square of the 3x3 square
   x0 = x - x%3
   y0 = y - y%3
