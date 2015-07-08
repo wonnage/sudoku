@@ -4,6 +4,8 @@
 ## with an implementation of the function, you should have a working
 ## Sudoku solver.
 
+from sudoku import digits, main
+
 #
 # Recursive depth first search
 #
@@ -37,18 +39,16 @@ def load_puzzle(path):
   def to_digit(chr):
     if chr=='.': return 0
     else: return int(chr)
-  return [[to_digit(chr) for chr in line.strip().replace(' ','').replace('|','')] for line in open(path) if line.strip() and '-' not in line]
+  return [map(to_digit, line.strip().replace(' ','').replace('|','')) for line in open(path) if line.strip() and '-' not in line]
 
-def show(board):
+def pretty(board):
   if board is None: return 'NO SOLUTION'
-  for y, line in enumerate(board):
-    if y%3 == 0 and y != 0: print('------+-------+------')
-    print('%s %s %s | %s %s %s | %s %s %s' % tuple(line))
+  for line in board:
+    return '\n'.join(''.join(map(str,line)) for line in board)
 
 if __name__ == '__main__':
   board = load_puzzle('easy.txt')
-
-  print('unsolved:')
-  show(board)
-  print('solved:')
-  show(search(board))
+  print ('unsolved:')
+  print (pretty(board))
+  print ('solved:')
+  print (pretty(search(board)))
