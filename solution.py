@@ -55,9 +55,7 @@ def assign(board, square, digit):
     "Return new board with digit d in square s."
     new_board = copy.deepcopy(board)
     x, y = square
-    assert board[y][x] == 0
     new_board[y][x] = digit
-    assert board[y][x] == 0
     return new_board
 
 def load_puzzle(path):
