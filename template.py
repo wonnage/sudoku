@@ -35,8 +35,20 @@ def assign(board, square, digit):
     "Return new board with digit d in square s."
     pass
 
-def solve(givens):
-    "Given a list of givens, return a solution in the form of a list of digits."
-    pass
+def load_puzzle(path):
+  def to_digit(chr):
+    if chr=='.': return 0
+    else: return int(chr)
+  return [map(to_digit, line.strip().replace(' ','').replace('|','')) for line in open(path) if line.strip() and '-' not in line]
 
-main(solve)
+def pretty(board):
+  if board is None: return 'NO SOLUTION'
+  for line in board:
+    return ''.join(map(str,line))
+
+if __name__ == '__main__':
+  board = load_puzzle('easy.txt')
+  print ('unsolved:')
+  print (pretty(board))
+  print ('solved:')
+  print (pretty(search(board)))
