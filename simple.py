@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from sudoku import digits, main
+import copy
 
 rows  = [ [ r*9 + c for c in range(9) ] for r in range(9) ]
 cols  = [ [ r*9 + c for r in range(9) ] for c in range(9) ]
@@ -37,7 +38,7 @@ def possible_digits(b, s):
     return digits
 
 def assign(b, s, d):
-    new_board = b.copy()
+    new_board = copy.copy(b) #b.copy()
     new_board[s] = d
     return new_board if not contradiction(new_board) else None
 
