@@ -64,11 +64,16 @@ def same_col(row, col):
 def same_square(row, col):
   "Return all coordinates that are in the same 3x3 box as (row,col)"
   # upper left square of the 3x3 square
-  
+  same_square = []
   top_row = row - row%3
   left_col = col - col%3
   # final answer
-  return [(top_row + dx, left_col + dy) for dx in range(3) for dy in range(3)]
+  for i in range(0,3):
+      for j in range(0,3):
+          same_square.append((i,j))
+  return same_square
+         
+  #Alternatively: return [(top_row + dx, left_col + dy) for dx in range(3) for dy in range(3)]
         
 def possible_digits(board, row, col):
     "Return list of all the digits that are allowed to go in the square (row, col)."
