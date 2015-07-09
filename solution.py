@@ -12,23 +12,26 @@
 
 import copy
 
-def search(board):
+def solve(board):
     if board is None or solved(board): return board
 
     (row, col) = empty_square(board)
     for digit in possible_digits(board, row, col):
         assigned_board = assign(board, row, col, digit)
-        solution = search(assigned_board)
+        solution = solve(assigned_board)
         if solution: return solution
     return None
 
 def solved(board):
     "Return True if all the squares are filled in. Return False if there are any empty squares."
-    for row in board:
-        for square in row:
-            if square == 0:
-                return False
-    return True
+    return empty_square(board) is None
+    
+    #Alternatively:
+    #for row in board:
+    #    for square in row:
+    #        if square == 0:
+    #            return False
+    #return True
     
     #Alternatively:
     #for i in range(0,9):
@@ -84,26 +87,25 @@ def assign(board, row, col, digit):
     new_board[row][col] = digit
     return new_board
 
+### Loading boards from a file, showing them on the screen -- you don't need to change this
+
 def load_puzzle(path):
   def to_digit(chr):
     if chr=='.': return 0
     else: return int(chr)
   return [map(to_digit, line.strip().replace(' ','').replace('|','')) for line in open(path) if line.strip() and '-' not in line]
 
-def pretty(board):
-  if board is None: return 'NO BOARD'
-  for line in board:
-    return '\n'.join(''.join(map(str,line)) for line in board)
-    
 def show(board):
   if board is None: return 'NO SOLUTION'
   for y, line in enumerate(board):
     if y%3 == 0 and y != 0: print('------+-------+------')
-    print('%s %s %s | %s %s %s | %s %s %s' % tuple(line))
+    print('%s %s %s | %s %s %s | %s %s %s' % tuple(digit or '.' for digit in line))
+
+### Starting point of the program. Load a board (you can change which!), call solve() to solve it
 
 if __name__ == '__main__':
   board = load_puzzle('easy.txt')
   print('Unsolved board:')
-  print(show(board))
+  show(board)
   print('Your solution:')
-  show(search(board))
+  show(solve(board))
