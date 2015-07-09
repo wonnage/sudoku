@@ -56,7 +56,7 @@ def assign(board, row, col, digit):
     new_board[row][col] = digit
     return new_board
 
-### Loading boards from a file, showign them on the screen -- you don't need to change this
+### Loading boards from a file, showing them on the screen -- you don't need to change this
 
 def load_puzzle(path):
   def to_digit(chr):
@@ -68,7 +68,7 @@ def show(board):
   if board is None: return 'NO SOLUTION'
   for y, line in enumerate(board):
     if y%3 == 0 and y != 0: print('------+-------+------')
-    print('%s %s %s | %s %s %s | %s %s %s' % tuple(line))
+    print('%s %s %s | %s %s %s | %s %s %s' % tuple(digit or '.' for digit in line))
 
 ### Starting point of the program. Load a board (you can change which!), call solve() to solve it
 
